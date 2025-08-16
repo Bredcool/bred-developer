@@ -17,7 +17,7 @@
                             <strong>Rediawan Ibrahim</strong>, also known as <strong>Bred</strong>, is a developer
                             focused
                             on
-                            building modern web applications using stacks like <strong>Vue 3</strong>,
+                            building modern web applications using stacks like <strong>Vue JS</strong>,
                             <strong>Golang</strong>,
                             and <strong>PostgreSQL</strong>. I enjoy building
                             products that are not only functional, but also clean and easy to use.

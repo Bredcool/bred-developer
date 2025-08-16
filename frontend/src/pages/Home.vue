@@ -75,6 +75,32 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Other -->
+            <h4 class="text-center mb-3">Other</h4>
+            <div class="row row-cols-2 row-cols-md-4 g-4 text-center mb-5">
+                <div class="col" v-for="skill in otherSkills" :key="skill.name">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body glowing-border">
+                            <i :class="skill.icon" style="font-size: 2rem;"></i>
+                            <h5 class="card-title mt-2">{{ skill.name }}</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Soft -->
+            <h4 class="text-center mb-3">Soft</h4>
+            <div class="row row-cols-2 row-cols-md-4 g-4 text-center mb-5">
+                <div class="col" v-for="skill in softSkills" :key="skill.name">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body glowing-border">
+                            <i :class="skill.icon" style="font-size: 2rem;"></i>
+                            <h5 class="card-title mt-2">{{ skill.name }}</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- Projects Teaser -->
@@ -96,24 +122,38 @@
 
 <script setup>
 const frontendSkills = [
-    { name: 'Vue', icon: 'fab fa-vuejs' },
+    { name: 'Vue JS', icon: 'fab fa-vuejs' },
     { name: 'Angular', icon: 'fab fa-angular' },
     { name: 'HTML', icon: 'fa-brands fa-html5' },
     { name: 'CSS', icon: 'fa-brands fa-css3-alt' },
 ]
 
 const backendSkills = [
-    { name: 'Golang', icon: 'fab fa-golang' },
-    { name: 'JavaScript', icon: 'fab fa-js' },
+    { name: 'Golang (Fiber)', icon: 'fab fa-golang' },
+    { name: 'JavaScript (Node JS)', icon: 'fab fa-js' },
+    { name: 'C#', icon: 'fa-solid fa-code' },
 ]
 
 const databaseSkills = [
     { name: 'PostgreSQL', icon: 'fa fa-database' },
+    { name: 'Microsoft SQL', icon: 'fa fa-database' },
 ]
 
 const toolsSkills = [
     { name: 'Docker', icon: 'fa-brands fa-docker' },
     { name: 'GitHub', icon: 'fa-brands fa-github' },
+]
+
+const otherSkills = [
+    { name: 'Internet of Things', icon: 'fa-solid fa-network-wired' },
+    { name: 'Arduino', icon: 'fa-solid fa-microchip' },
+]
+
+const softSkills = [
+    { name: 'Communication Skills', icon: 'fa-solid fa-people-arrows' },
+    { name: 'Fast and Eager Learner', icon: 'fa-solid fa-chalkboard-user' },
+    { name: 'Teamwork', icon: 'fa-solid fa-people-group' },
+    { name: 'Highly Motivated and Dedicated', icon: 'fa-regular fa-face-smile' },
 ]
 </script>
 

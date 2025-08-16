@@ -12,6 +12,9 @@
                                 <div>
                                     <h6 class="mb-1 fw-semibold">WhatsApp</h6>
                                     <p class="mb-0 text-light">+62 896-9321-8083</p>
+                                    <a :href="whatsappUrl" target="_blank" class="btn btn-outline-light btn-sm mb-2">
+                                        Kirim Pesan
+                                    </a>
                                 </div>
                             </div>
 
@@ -52,7 +55,10 @@
 </template>
 
 <script setup lang="ts">
-// tidak ada logic saat ini
+// Ganti nomor WhatsApp di sini
+const phoneNumber = '6289693218083'
+const message = 'Halo Bred Developer! Saya ingin membuat Website.'
+const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
 </script>
 
 <style scoped>
