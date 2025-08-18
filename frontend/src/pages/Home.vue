@@ -1,19 +1,19 @@
 <template>
     <div class="text-white min-vh-100 py-5">
         <section class="text-center py-5 text-light hero-gradient">
-            <div class="container">
+            <!-- Canvas untuk bintang -->
+            <canvas id="stars-canvas"></canvas>
+
+            <div class="container position-relative">
                 <h1 class="display-4 fw-bold mb-4">
                     Hi, I'm <span class="text-warning">Bred</span> 👋
                 </h1>
-
                 <p class="lead mb-4">
                     A <strong>Fullstack Developer</strong> who builds clean, efficient, and scalable web applications
                 </p>
-
                 <p class="fs-5 text-white-50 fst-italic mb-4">
                     "Learning From The Past, Looking To The Future"
                 </p>
-
                 <router-link to="/projects" class="btn btn-lg btn-light text-dark px-4 py-2 shadow-sm">
                     🚀 View My Work
                 </router-link>
@@ -155,6 +155,62 @@ const softSkills = [
     { name: 'Teamwork', icon: 'fa-solid fa-people-group' },
     { name: 'Highly Motivated and Dedicated', icon: 'fa-regular fa-face-smile' },
 ]
+
+import * as THREE from "three"
+import { onMounted } from "vue"
+
+onMounted(() => {
+    const canvas = document.getElementById("stars-canvas")
+    const scene = new THREE.Scene()
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
+    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true })
+    renderer.setSize(window.innerWidth, window.innerHeight)
+
+    // Bintang
+    const starGeometry = new THREE.BufferGeometry()
+    const starCount = 2000
+    const starPositions = []
+    for (let i = 0; i < starCount; i++) {
+        const x = (Math.random() - 0.5) * 2000
+        const y = (Math.random() - 0.5) * 2000
+        const z = -Math.random() * 2000
+        starPositions.push(x, y, z)
+    }
+    starGeometry.setAttribute("position", new THREE.Float32BufferAttribute(starPositions, 3))
+    const starMaterial = new THREE.PointsMaterial({ color: 0xffffff, size: 1 })
+    const stars = new THREE.Points(starGeometry, starMaterial)
+    scene.add(stars)
+
+    camera.position.z = 5
+
+    // Variabel untuk interaksi mouse
+    let mouseX = 0, mouseY = 0
+    window.addEventListener("mousemove", (e) => {
+        mouseX = (e.clientX / window.innerWidth) * 2 - 1
+        mouseY = -(e.clientY / window.innerHeight) * 2 + 1
+    })
+
+    function animate() {
+        requestAnimationFrame(animate)
+
+        // Rotasi dasar
+        stars.rotation.y += 0.0005
+        stars.rotation.x += 0.0002
+
+        // Parallax efek: kamera sedikit geser sesuai mouse
+        camera.position.x += (mouseX * 2 - camera.position.x) * 0.05
+        camera.position.y += (mouseY * 2 - camera.position.y) * 0.05
+
+        renderer.render(scene, camera)
+    }
+    animate()
+
+    window.addEventListener("resize", () => {
+        camera.aspect = window.innerWidth / window.innerHeight
+        camera.updateProjectionMatrix()
+        renderer.setSize(window.innerWidth, window.innerHeight)
+    })
+})
 </script>
 
 <style scoped>
@@ -177,10 +233,27 @@ const softSkills = [
 }
 
 .hero-gradient {
-    background: linear-gradient(135deg, #00427c, #000428, #007c42);
-    background-size: 300% 300%;
-    animation: gradientBG 12s ease infinite;
-    color: #fff;
+    position: relative;
+    overflow: hidden;
+    background: #000;
+    /* fallback hitam */
+}
+
+#stars-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    background: #000;
+    /* biar tetap hitam meskipun scene gagal render */
+}
+
+.container {
+    position: relative;
+    z-index: 1;
+    /* Supaya teks tetap di atas bintang */
 }
 
 section {
@@ -196,20 +269,6 @@ section {
     100% {
         opacity: 1;
         transform: translateY(0);
-    }
-}
-
-@keyframes gradientBG {
-    0% {
-        background-position: 0% 50%;
-    }
-
-    50% {
-        background-position: 100% 50%;
-    }
-
-    100% {
-        background-position: 0% 50%;
     }
 }
 </style>

@@ -1,7 +1,10 @@
 <template>
     <div class="text-white min-vh-100 py-5">
         <section class="contact-section py-5 hero-gradient text-white">
-            <div class="container">
+            <!-- Canvas untuk bintang -->
+            <canvas id="stars-contact"></canvas>
+
+            <div class="container position-relative">
                 <h2 class="text-center fw-bold mb-5">Let's Connect</h2>
                 <div class="row justify-content-center">
                     <div class="col-md-8 col-lg-6">
@@ -54,18 +57,75 @@
     </div>
 </template>
 
-<script setup lang="ts">
-// Ganti nomor WhatsApp di sini
+<script setup>
+import * as THREE from "three"
+import { onMounted } from "vue"
+
+// WhatsApp config
 const phoneNumber = '6289693218083'
 const message = 'Halo Bred Developer! Saya ingin membuat Website.'
 const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
+
+onMounted(() => {
+    const canvas = document.getElementById("stars-contact")
+    const scene = new THREE.Scene()
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
+    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true })
+    renderer.setSize(window.innerWidth, window.innerHeight)
+
+    // Bintang
+    const starGeometry = new THREE.BufferGeometry()
+    const starCount = 1500
+    const starPositions = []
+    for (let i = 0; i < starCount; i++) {
+        const x = (Math.random() - 0.5) * 2000
+        const y = (Math.random() - 0.5) * 2000
+        const z = -Math.random() * 2000
+        starPositions.push(x, y, z)
+    }
+    starGeometry.setAttribute("position", new THREE.Float32BufferAttribute(starPositions, 3))
+
+    const starMaterial = new THREE.PointsMaterial({ color: 0xffffff, size: 1 })
+    const stars = new THREE.Points(starGeometry, starMaterial)
+    scene.add(stars)
+
+    camera.position.z = 5
+
+    function animate() {
+        requestAnimationFrame(animate)
+        stars.rotation.y += 0.0006
+        stars.rotation.x += 0.0003
+        renderer.render(scene, camera)
+    }
+    animate()
+
+    window.addEventListener("resize", () => {
+        camera.aspect = window.innerWidth / window.innerHeight
+        camera.updateProjectionMatrix()
+        renderer.setSize(window.innerWidth, window.innerHeight)
+    })
+})
 </script>
 
 <style scoped>
 .hero-gradient {
-    background: linear-gradient(135deg, #00427c, #000428, #007c42);
-    background-size: 300% 300%;
-    animation: gradientBG 12s ease infinite;
+    position: relative;
+    overflow: hidden;
+}
+
+#stars-contact {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    background: #000;
+}
+
+.container {
+    position: relative;
+    z-index: 1;
 }
 
 .contact-card {
@@ -79,17 +139,19 @@ const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(mess
     transform: translateY(-5px);
 }
 
-@keyframes gradientBG {
-    0% {
-        background-position: 0% 50%;
-    }
+section {
+    animation: fadeInDown 1s ease-in-out;
+}
 
-    50% {
-        background-position: 100% 50%;
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
     }
 
     100% {
-        background-position: 0% 50%;
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 </style>
