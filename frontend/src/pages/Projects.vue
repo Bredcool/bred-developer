@@ -60,9 +60,9 @@ const projects = [
         id: 3,
         name: 'Mini 3D',
         description: 'Modern 3D website and advanced visualization.',
-        image: '/assets/3d.jpg',
-        demo: 'https://3d.pages.dev/',
-        github: 'https://github.com/bredcool/3d',
+        image: '/assets/mini_3d.jpg',
+        demo: 'https://mini-3d.pages.dev/',
+        github: 'https://github.com/bredcool/mini-3d',
     },
     {
         id: 4,
