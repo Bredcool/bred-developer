@@ -24,14 +24,14 @@
                         </p>
                         <div>
                             <a href="https://www.linkedin.com/in/rediawan-ibrahim-760b0a232/" target="_blank"
-                                class="btn btn-outline-primary me-2 mb-2">
+                                class="button btn btn-outline-primary me-2 mb-2">
                                 <i class="bi bi-linkedin me-1"></i> LinkedIn
                             </a>
                             <a href="https://github.com/Bredcool" target="_blank"
-                                class="btn btn-outline-primary me-2 mb-2">
+                                class="button btn btn-outline-primary me-2 mb-2">
                                 <i class="bi bi-github me-1"></i> GitHub
                             </a>
-                            <a href="/assets/CV Rediawan Ibrahim.pdf" download class="btn btn-primary mb-2">
+                            <a href="/assets/CV Rediawan Ibrahim.pdf" download class="button btn btn-primary mb-2">
                                 <i class="bi bi-download me-1"></i> Unduh CV
                             </a>
                         </div>
@@ -52,7 +52,15 @@
     max-width: 100%;
     height: auto;
     border-radius: 12px;
-    box-shadow: 0 0 30px rgba(0, 255, 100, 0.4);
+    box-shadow: 0 0 10px rgba(0, 255, 100, 0.4);
+}
+
+.button {
+    transition: transform 0.3s ease;
+}
+
+.button:hover {
+    transform: translateY(-5px);
 }
 
 section {
