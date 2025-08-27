@@ -123,7 +123,9 @@
 <script setup>
 const frontendSkills = [
     { name: 'Vue JS', icon: 'fab fa-vuejs' },
+    { name: 'React JS', icon: 'fa-brands fa-react' },
     { name: 'Angular', icon: 'fab fa-angular' },
+    { name: 'Bootstrap', icon: 'fa-brands fa-bootstrap' },
     { name: 'HTML', icon: 'fa-brands fa-html5' },
     { name: 'CSS', icon: 'fa-brands fa-css3-alt' },
 ]
@@ -136,6 +138,7 @@ const backendSkills = [
 
 const databaseSkills = [
     { name: 'PostgreSQL', icon: 'fa fa-database' },
+    { name: 'MySQL', icon: 'fa fa-database' },
     { name: 'Microsoft SQL', icon: 'fa fa-database' },
 ]
 
