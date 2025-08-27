@@ -52,7 +52,7 @@
     max-width: 100%;
     height: auto;
     border-radius: 12px;
-    box-shadow: 0 0 10px rgba(0, 255, 100, 0.4);
+    box-shadow: 0 0 15px rgba(0, 255, 100, 0.4);
 }
 
 .button {
