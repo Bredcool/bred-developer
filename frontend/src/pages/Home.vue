@@ -132,7 +132,7 @@ const frontendSkills = [
 
 const backendSkills = [
     { name: 'Golang (Fiber)', icon: 'fab fa-golang' },
-    { name: 'JavaScript (Node JS)', icon: 'fab fa-js' },
+    { name: 'JavaScript (Express JS)', icon: 'fab fa-js' },
     { name: 'C#', icon: 'fa-solid fa-code' },
 ]
 
