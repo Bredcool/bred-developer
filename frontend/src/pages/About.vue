@@ -82,9 +82,24 @@
                                 class="button btn btn-outline-primary me-2 mb-2">
                                 <i class="bi bi-github me-1"></i> GitHub
                             </a>
-                            <a href="/assets/CV Rediawan Ibrahim.pdf" download class="button btn btn-primary mb-2">
-                                <i class="bi bi-download me-1"></i> Unduh CV
-                            </a>
+                            <button class="button btn btn-primary mb-2 dropdown-toggle" type="button" id="cvDropdown"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-download me-1"></i> Download CV
+                            </button>
+                            <ul class="dropdown-menu custom-dropdown shadow border-0" aria-labelledby="cvDropdown">
+                                <li>
+                                    <a class="dropdown-item d-flex align-items-center gap-2"
+                                        href="/assets/CV Rediawan Ibrahim.pdf" download>
+                                        <span>Indonesian version</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item d-flex align-items-center gap-2"
+                                        href="/assets/CV Rediawan Ibrahim (English).pdf" download>
+                                        <span>English version</span>
+                                    </a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
 
@@ -131,27 +146,22 @@
     font-size: 2.2rem;
     font-weight: 900;
     color: #d4af37;
-    /* abu pucat */
     text-transform: uppercase;
     letter-spacing: 4px;
     padding: 6px 20px;
     border: 2px solid #555;
-    /* abu gelap */
     border-radius: 6px;
     display: inline-block;
 
-    /* Efek seram */
     font-family: 'Cinzel Decorative', 'Trajan Pro', serif;
     text-shadow: 0 0 8px rgba(212, 175, 55, 0.25),
         0 0 20px rgba(212, 175, 55, 0.15),
         2px 2px 8px rgba(0, 0, 0, 0.8);
 
     background: rgba(10, 10, 10, 0.7);
-    /* transparan gelap */
     box-shadow: inset 0 0 10px rgba(212, 175, 55, 0.15),
         0 0 15px rgba(0, 0, 0, 0.9);
 }
-
 
 .button {
     transition: transform 0.3s ease;
@@ -159,6 +169,26 @@
 
 .button:hover {
     transform: translateY(-5px);
+}
+
+.custom-dropdown {
+    background-color: #1c1c1c;
+    min-width: 230px;
+    padding: 0.5rem;
+    border-radius: 12px;
+}
+
+.custom-dropdown .dropdown-item {
+    color: #e0e0e0;
+    border-radius: 8px;
+    padding: 0.6rem 1rem;
+    transition: all 0.2s ease;
+}
+
+.custom-dropdown .dropdown-item:hover {
+    background: rgba(0, 255, 100, 0.15);
+    color: #00ff64;
+    transform: translateX(5px);
 }
 
 section {
