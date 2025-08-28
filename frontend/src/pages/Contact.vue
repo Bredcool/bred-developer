@@ -16,7 +16,7 @@
                                     <h6 class="mb-1 fw-semibold">WhatsApp</h6>
                                     <p class="mb-0 text-light">+62 896-9321-8083</p>
                                     <a :href="whatsappUrl" target="_blank" class="btn btn-outline-light btn-sm mb-2">
-                                        Kirim Pesan
+                                        WhatsApp
                                     </a>
                                 </div>
                             </div>
