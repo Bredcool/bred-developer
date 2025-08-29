@@ -58,7 +58,7 @@
                             </svg>
                         </div>
 
-                        <div class="god-label">
+                        <div class="god-label" @click="triggerGodEasterEgg">
                             GOD
                         </div>
                     </div>
@@ -110,7 +110,18 @@
 </template>
 
 <script setup lang="ts">
-// No logic yet
+import { ref } from "vue";
+
+const isTriggered = ref(false);
+
+const triggerGodEasterEgg = () => {
+    isTriggered.value = true;
+
+    // Contoh: kembalikan lagi setelah 2 detik
+    setTimeout(() => {
+        isTriggered.value = false;
+    }, 2000);
+};
 </script>
 
 <style scoped>
@@ -161,6 +172,63 @@
     background: rgba(10, 10, 10, 0.7);
     box-shadow: inset 0 0 10px rgba(212, 175, 55, 0.15),
         0 0 15px rgba(0, 0, 0, 0.9);
+}
+
+.god-text {
+    font-size: 2.5rem;
+    font-family: 'Cinzel', serif;
+    /* kesan seram klasik */
+    color: #e0e0e0;
+    text-shadow: 0 0 10px rgba(0, 255, 100, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.god-text:hover {
+    color: #00ff64;
+    text-shadow: 0 0 20px #00ff64;
+}
+
+/* Saat Easter Egg aktif */
+.god-text:active,
+.god-text.triggered {
+    animation: shake 0.3s infinite, neon-glow 1s infinite alternate;
+}
+
+@keyframes shake {
+    0% {
+        transform: translate(1px, 1px) rotate(0deg);
+    }
+
+    20% {
+        transform: translate(-1px, -2px) rotate(-1deg);
+    }
+
+    40% {
+        transform: translate(-3px, 0px) rotate(1deg);
+    }
+
+    60% {
+        transform: translate(3px, 2px) rotate(0deg);
+    }
+
+    80% {
+        transform: translate(1px, -1px) rotate(1deg);
+    }
+
+    100% {
+        transform: translate(-1px, 2px) rotate(-1deg);
+    }
+}
+
+@keyframes neon-glow {
+    from {
+        text-shadow: 0 0 10px #00ff64, 0 0 20px #00ff64;
+    }
+
+    to {
+        text-shadow: 0 0 20px #00ff64, 0 0 40px #00ff64;
+    }
 }
 
 .button {
