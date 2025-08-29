@@ -62,9 +62,18 @@
                             GOD
                         </div> -->
 
-                        <p class="god-text" @click="triggerGodEasterEgg">
+                        <!-- <p class="god-text" @click="triggerGodEasterEgg">
                             GOD
-                        </p>
+                        </p> -->
+
+                        <div class="about-wrapper" :class="{ 'glitch-mode': isTriggered }">
+                            <p class="god-text" @click="triggerGodEasterEgg">
+                                GOD
+                            </p>
+
+                            <!-- Overlay Matrix Rain -->
+                            <div v-if="isTriggered" class="matrix-overlay"></div>
+                        </div>
                     </div>
 
                     <!-- Deskripsi -->
@@ -114,6 +123,19 @@
 </template>
 
 <script setup lang="ts">
+// import { ref } from "vue";
+
+// const isTriggered = ref(false);
+
+// const triggerGodEasterEgg = () => {
+//     isTriggered.value = true;
+
+//     // Contoh: kembalikan lagi setelah 2 detik
+//     setTimeout(() => {
+//         isTriggered.value = false;
+//     }, 2000);
+// };
+
 import { ref } from "vue";
 
 const isTriggered = ref(false);
@@ -121,10 +143,10 @@ const isTriggered = ref(false);
 const triggerGodEasterEgg = () => {
     isTriggered.value = true;
 
-    // Contoh: kembalikan lagi setelah 2 detik
+    // kembali normal setelah 5 detik
     setTimeout(() => {
         isTriggered.value = false;
-    }, 2000);
+    }, 5000);
 };
 </script>
 
@@ -178,10 +200,9 @@ const triggerGodEasterEgg = () => {
         0 0 15px rgba(0, 0, 0, 0.9);
 }
 
-.god-text {
+/* .god-text {
     font-size: 2.5rem;
     font-family: 'Cinzel', serif;
-    /* kesan seram klasik */
     color: #e0e0e0;
     text-shadow: 0 0 10px rgba(0, 255, 100, 0.5);
     cursor: pointer;
@@ -193,7 +214,6 @@ const triggerGodEasterEgg = () => {
     text-shadow: 0 0 20px #00ff64;
 }
 
-/* Saat Easter Egg aktif */
 .god-text:active,
 .god-text.triggered {
     animation: shake 0.3s infinite, neon-glow 1s infinite alternate;
@@ -232,6 +252,83 @@ const triggerGodEasterEgg = () => {
 
     to {
         text-shadow: 0 0 20px #00ff64, 0 0 40px #00ff64;
+    }
+} */
+
+.god-text {
+    font-size: 3rem;
+    font-family: 'Cinzel', serif;
+    /* vibe seram klasik */
+    color: #e0e0e0;
+    text-shadow: 0 0 10px rgba(0, 255, 100, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.god-text:hover {
+    color: #00ff64;
+    text-shadow: 0 0 20px #00ff64;
+}
+
+/* Mode Glitch */
+.glitch-mode {
+    animation: screenShake 0.3s infinite;
+    background-color: black;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Overlay Matrix */
+.matrix-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: repeating-linear-gradient(to bottom,
+            rgba(0, 255, 100, 0.1) 0,
+            rgba(0, 255, 100, 0.1) 2px,
+            transparent 2px,
+            transparent 4px);
+    animation: matrixRain 1s linear infinite;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.8;
+}
+
+@keyframes screenShake {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    20% {
+        transform: translate(-2px, 2px);
+    }
+
+    40% {
+        transform: translate(2px, -2px);
+    }
+
+    60% {
+        transform: translate(-2px, -1px);
+    }
+
+    80% {
+        transform: translate(1px, 2px);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+@keyframes matrixRain {
+    0% {
+        background-position: 0 -50px;
+    }
+
+    100% {
+        background-position: 0 50px;
     }
 }
 
