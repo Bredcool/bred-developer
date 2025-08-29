@@ -58,9 +58,13 @@
                             </svg>
                         </div>
 
-                        <div class="god-label" @click="triggerGodEasterEgg">
+                        <div class="god-label">
                             GOD
                         </div>
+
+                        <p class="god-text" @click="triggerGodEasterEgg">
+                            GOD
+                        </p>
                     </div>
 
                     <!-- Deskripsi -->
