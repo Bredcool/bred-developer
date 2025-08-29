@@ -5,9 +5,9 @@
 
             <!-- Pilihan Project -->
             <div class="mb-3">
-                <label class="form-label">Pilih Project</label>
+                <label class="form-label">Select Project</label>
                 <select v-model="selectedProject" class="form-select">
-                    <option disabled value="">-- Pilih Project --</option>
+                    <option disabled value="">-- Select Project --</option>
                     <option v-for="(packages, project) in dataList" :key="project" :value="project">
                         {{ project }}
                     </option>
@@ -16,9 +16,9 @@
 
             <!-- Pilihan Paket -->
             <div class="mb-3" v-if="selectedProject">
-                <label class="form-label">Pilih Paket</label>
+                <label class="form-label">Select Package</label>
                 <select v-model="selectedPackage" class="form-select">
-                    <option disabled value="">-- Pilih Paket --</option>
+                    <option disabled value="">-- Select Package --</option>
                     <option v-for="(data, pkg) in dataList[selectedProject]" :key="pkg" :value="pkg">
                         {{ pkg }}
                     </option>
@@ -27,25 +27,25 @@
 
             <!-- Opsi Hosting -->
             <div class="mb-3" v-if="selectedPackage">
-                <label class="form-label">Pilih Hosting</label>
+                <label class="form-label">Select Hosting</label>
                 <select v-model="selectedHosting" class="form-select">
-                    <option value="">Tidak Perlu Hosting</option>
+                    <option value="">No Hosting Required</option>
                     <option value="vps">VPS</option>
                 </select>
             </div>
 
             <!-- Opsi Maintenance -->
             <div class="mb-3" v-if="selectedPackage">
-                <label class="form-label">Pilih Maintenance</label>
+                <label class="form-label">Select Maintenance</label>
                 <select v-model="selectedMaintenance" class="form-select">
-                    <option value="0">Tidak Perlu</option>
-                    <option :value="maintenancePrices.perbulan">Perbulan - {{ formatRupiah(maintenancePrices.perbulan)
+                    <option value="0">No need</option>
+                    <option :value="maintenancePrices.perbulan">Each Month - {{ formatRupiah(maintenancePrices.perbulan)
                     }}
                     </option>
-                    <option :value="maintenancePrices.minor">Per Revisi Minor - {{ formatRupiah(maintenancePrices.minor)
+                    <option :value="maintenancePrices.minor">Every Minor Revision - {{ formatRupiah(maintenancePrices.minor)
                     }}
                     </option>
-                    <option :value="maintenancePrices.major">Per Revisi Major - {{ formatRupiah(maintenancePrices.major)
+                    <option :value="maintenancePrices.major">Every Major Revision - {{ formatRupiah(maintenancePrices.major)
                     }}
                     </option>
                 </select>
@@ -61,7 +61,7 @@
                     <!-- Card Fitur -->
                     <div class="col-md-6 mb-3">
                         <div class="card h-100 shadow-sm">
-                            <div class="card-header bg-primary text-white fw-bold">📋 Fitur</div>
+                            <div class="card-header bg-primary text-white fw-bold">📋 Feature</div>
                             <ul class="list-group list-group-flush">
                                 <li v-for="feature in dataList[selectedProject][selectedPackage].features"
                                     :key="feature" class="list-group-item">
@@ -74,9 +74,9 @@
                     <!-- Card Biaya -->
                     <div class="col-md-6 mb-3">
                         <div class="card h-100 shadow-sm">
-                            <div class="card-header bg-success text-white fw-bold">💵 Rincian Biaya</div>
+                            <div class="card-header bg-success text-white fw-bold">💵 Cost breakdown</div>
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item">Paket: {{ formatRupiah(basePrice) }}</li>
+                                <li class="list-group-item">Package: {{ formatRupiah(basePrice) }}</li>
                                 <li v-if="hostingPrice > 0" class="list-group-item">Hosting: {{
                                     formatRupiah(hostingPrice)
                                 }} / tahun</li>
@@ -88,10 +88,10 @@
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-success w-100 btn-lg mt-2">Pesan sekarang</button>
+                <button type="submit" class="btn btn-success w-100 btn-lg mt-2">Order now</button>
 
                 <h5 class="text-center fw-bold">
-                    Note: Harga bisa berubah sesuai kebutuhan
+                    Note: Prices may change according to needs
                 </h5>
             </div>
         </div>

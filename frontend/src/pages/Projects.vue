@@ -3,9 +3,8 @@
         <div class="container py-5">
             <h2 class="text-center mb-4 fw-bold">Project Portfolio</h2>
             <p class="text-center mb-5">
-                The following are several projects that I have created or am currently creating using the Vue 3, Golang,
-                and
-                PostgreSQL stack.
+                The following are several projects that I have created or am currently creating using the Vue JS,
+                Golang, and PostgreSQL stack.
             </p>
 
             <section>
