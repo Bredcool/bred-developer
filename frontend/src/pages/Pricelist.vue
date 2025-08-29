@@ -88,9 +88,9 @@
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-success w-100 btn-lg mt-2">Order now</button>
+                <button type="submit" class="btn btn-success w-100 btn-lg mt-2 mb-3">Order now</button>
 
-                <h5 class="text-center fw-bold mt-9">
+                <h5 class="text-center fw-bold">
                     Note: Prices may change according to needs
                 </h5>
             </div>
