@@ -91,7 +91,7 @@
                                 {{ randomAscii() }}
                             </div>
 
-                            <audio ref="glitchSound" src="/assets/glitch.wav"></audio>
+                            <!-- <audio ref="glitchSound" src="/assets/glitch.wav"></audio> -->
                         </div>
                     </div>
 
@@ -182,7 +182,9 @@ const triggerGodEasterEgg = () => {
     isTriggered.value = true;
 
     // mainkan sound
-    glitchSound.value?.play();
+    // glitchSound.value?.play();
+    const audio = new Audio("/assets/glitch.wav");
+    audio.play();
 
     // balik normal setelah 6 detik
     setTimeout(() => {
