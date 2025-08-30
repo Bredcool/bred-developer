@@ -1,7 +1,7 @@
 <template>
     <div class="text-white min-vh-100 py-5" :class="{ 'glitch-mode': isTriggered }">
         <!-- Overlay glitch -->
-        <div v-if="isTriggered" class="matrix-overlay"></div>
+        <!-- <div v-if="isTriggered" class="matrix-overlay"></div> -->
         <section>
             <div class="container py-5">
                 <div class="row align-items-center">
