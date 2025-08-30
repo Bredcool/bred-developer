@@ -1,4 +1,14 @@
-<template>
+<template class="{ 'glitch-mode': isTriggered }">
+    <!-- Overlay glitch -->
+    <div v-if="isTriggered" class="matrix-overlay"></div>
+
+    <!-- Random ASCII floating -->
+    <div v-if="isTriggered" class="glitch-text" v-for="n in 15" :key="n" :style="randomStyle()">
+        {{ randomAscii() }}
+    </div>
+
+    <!-- Suara -->
+    <audio ref="glitchSound" src="/assets/glitch.wav"></audio>
     <div class="text-white min-vh-100 py-5">
         <section>
             <div class="container py-5">
@@ -59,17 +69,10 @@
                         </div>
 
                         <div class="about-wrapper" :class="{ 'glitch-mode': isTriggered }">
+                            <!-- Trigger GOD -->
                             <p class="god-label" @click="triggerGodEasterEgg">
                                 GOD
                             </p>
-
-                            <div v-if="isTriggered" class="matrix-overlay"></div>
-
-                            <div v-if="isTriggered" class="glitch-text" v-for="n in 10" :key="n" :style="randomStyle()">
-                                {{ randomAscii() }}
-                            </div>
-
-                            <audio ref="glitchSound" src="/assets/glitch.wav"></audio>
                         </div>
                     </div>
 
@@ -127,45 +130,45 @@ const isTriggered = ref(false);
 const glitchSound = ref<HTMLAudioElement | null>(null);
 
 const triggerGodEasterEgg = () => {
-  isTriggered.value = true;
+    isTriggered.value = true;
 
-  // mainkan sound
-  if (glitchSound.value) {
-    glitchSound.value.volume = 0.5;
-    glitchSound.value.currentTime = 0;
-    glitchSound.value.play();
-  }
+    // mainkan sound
+    if (glitchSound.value) {
+        glitchSound.value.volume = 0.5;
+        glitchSound.value.currentTime = 0;
+        glitchSound.value.play();
+    }
 
-  // balik normal setelah 6 detik
-  setTimeout(() => {
-    isTriggered.value = false;
-    glitchSound.value?.pause();
-    glitchSound.value!.currentTime = 0;
-  }, 6000);
+    // balik normal setelah 6 detik
+    setTimeout(() => {
+        isTriggered.value = false;
+        glitchSound.value?.pause();
+        glitchSound.value!.currentTime = 0;
+    }, 6000);
 };
 
 // generate teks random ASCII
 const randomAscii = () => {
-  const chars = "!@#$%^&*()_+{}|:<>?[];,.";
-  return Array.from({ length: 5 }, () => chars[Math.floor(Math.random() * chars.length)]).join("");
+    const chars = "!@#$%^&*()_+{}|:<>?[];,.";
+    return Array.from({ length: 5 }, () => chars[Math.floor(Math.random() * chars.length)]).join("");
 };
 
 // posisi random untuk glitch text
 const randomStyle = (): CSSProperties => {
-  const top = Math.random() * 90 + "%";
-  const left = Math.random() * 90 + "%";
-  const color = Math.random() > 0.5 ? "#00ff64" : "#e0e0e0";
-  const fontSize = Math.random() * 20 + 12 + "px";
-  return {
-    position: "fixed",
-    top,
-    left,
-    color,
-    fontSize,
-    textShadow: "0 0 10px rgba(0,255,100,0.8)",
-    pointerEvents: "none",
-    zIndex: 10000,
-  };
+    const top = Math.random() * 90 + "%";
+    const left = Math.random() * 90 + "%";
+    const color = Math.random() > 0.5 ? "#00ff64" : "#e0e0e0";
+    const fontSize = Math.random() * 20 + 12 + "px";
+    return {
+        position: "fixed",
+        top,
+        left,
+        color,
+        fontSize,
+        textShadow: "0 0 10px rgba(0,255,100,0.8)",
+        pointerEvents: "none",
+        zIndex: 10000,
+    };
 };
 </script>
 
@@ -195,52 +198,52 @@ const randomStyle = (): CSSProperties => {
 .star-icon {
     fill: #f1c40f;
     filter: drop-shadow(0 0 1px rgba(241, 196, 15, 0.4));
-}.god-label {
-  margin-top: 15px;
-  font-size: 2.2rem;
-  font-weight: 900;
-  color: #d4af37;
-  text-transform: uppercase;
-  letter-spacing: 4px;
-  padding: 6px 20px;
-  border: 2px solid #555;
-  border-radius: 6px;
-  display: inline-block;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-family: 'Cinzel Decorative', 'Trajan Pro', serif;
-  text-shadow: 0 0 8px rgba(212, 175, 55, 0.25),
-    0 0 20px rgba(212, 175, 55, 0.15),
-    2px 2px 8px rgba(0, 0, 0, 0.8);
-  background: rgba(10, 10, 10, 0.7);
-  box-shadow: inset 0 0 10px rgba(212, 175, 55, 0.15),
-    0 0 15px rgba(0, 0, 0, 0.9);
+}
+
+.god-label {
+    margin-top: 15px;
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: #d4af37;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    padding: 6px 20px;
+    border: 2px solid #555;
+    border-radius: 6px;
+    display: inline-block;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Cinzel Decorative', 'Trajan Pro', serif;
+    text-shadow: 0 0 8px rgba(212, 175, 55, 0.25),
+        0 0 20px rgba(212, 175, 55, 0.15),
+        2px 2px 8px rgba(0, 0, 0, 0.8);
+    background: rgba(10, 10, 10, 0.7);
+    box-shadow: inset 0 0 10px rgba(212, 175, 55, 0.15),
+        0 0 15px rgba(0, 0, 0, 0.9);
 }
 
 /* Glitch full background */
 .glitch-mode {
-  animation: screenShake 0.3s infinite;
-  filter: invert(1) contrast(1.5);
+    animation: screenShake 0.3s infinite;
+    filter: invert(1) contrast(1.5);
 }
 
 .matrix-overlay {
-  position: fixed;
-  inset: 0;
-  background: repeating-linear-gradient(
-      0deg,
-      rgba(0, 255, 100, 0.1) 0,
-      rgba(0, 255, 100, 0.1) 2px,
-      transparent 2px,
-      transparent 4px
-  );
-  animation: matrixRain 0.7s linear infinite;
-  pointer-events: none;
-  z-index: 9999;
-  opacity: 0.9;
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(0deg,
+            rgba(0, 255, 100, 0.1) 0,
+            rgba(0, 255, 100, 0.1) 2px,
+            transparent 2px,
+            transparent 4px);
+    animation: matrixRain 0.7s linear infinite;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.9;
 }
 
 .glitch-text {
-  font-family: monospace;
+    font-family: monospace;
 }
 
 .button {
@@ -288,16 +291,38 @@ section {
 }
 
 @keyframes screenShake {
-  0% { transform: translate(0, 0); }
-  20% { transform: translate(-2px, 2px); }
-  40% { transform: translate(2px, -2px); }
-  60% { transform: translate(-2px, -1px); }
-  80% { transform: translate(1px, 2px); }
-  100% { transform: translate(0, 0); }
+    0% {
+        transform: translate(0, 0);
+    }
+
+    20% {
+        transform: translate(-2px, 2px);
+    }
+
+    40% {
+        transform: translate(2px, -2px);
+    }
+
+    60% {
+        transform: translate(-2px, -1px);
+    }
+
+    80% {
+        transform: translate(1px, 2px);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
 }
 
 @keyframes matrixRain {
-  0% { background-position: 0 -50px; }
-  100% { background-position: 0 50px; }
+    0% {
+        background-position: 0 -50px;
+    }
+
+    100% {
+        background-position: 0 50px;
+    }
 }
 </style>
