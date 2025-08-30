@@ -1,5 +1,5 @@
-<template class="{ 'glitch-mode': isTriggered }">
-    <div class="text-white min-vh-100 py-5">
+<template>
+    <div class="text-white min-vh-100 py-5" :class="{ 'glitch-mode': isTriggered }">
         <!-- Overlay glitch -->
         <div v-if="isTriggered" class="matrix-overlay"></div>
         <section>
@@ -67,7 +67,7 @@
                             </p>
 
                             <!-- Random ASCII floating -->
-                            <div v-if="isTriggered" class="glitch-text" v-for="n in 15" :key="n" :style="randomStyle()">
+                            <div v-if="isTriggered" class="glitch-text" v-for="n in 20" :key="n" :style="randomStyle()">
                                 {{ randomAscii() }}
                             </div>
 
@@ -155,9 +155,9 @@ const randomAscii = () => {
 
 // posisi random untuk glitch text
 const randomStyle = (): CSSProperties => {
-    const top = Math.random() * 90 + "%";
-    const left = Math.random() * 90 + "%";
-    const color = Math.random() > 0.5 ? "#00ff64" : "#e0e0e0";
+    const top = Math.random() * 100 + "%";
+    const left = Math.random() * 100 + "%";
+    const color = ["#00ff64", "#ff004c", "#00c8ff"][Math.floor(Math.random() * 3)];
     const fontSize = Math.random() * 20 + 12 + "px";
     return {
         position: "fixed",
@@ -165,7 +165,9 @@ const randomStyle = (): CSSProperties => {
         left,
         color,
         fontSize,
-        textShadow: "0 0 10px rgba(0,255,100,0.8)",
+        opacity: Math.random() * 0.8 + 0.2,
+        textShadow: "0 0 10px " + color,
+        animation: "flicker 0.2s infinite",
         pointerEvents: "none",
         zIndex: 10000,
     };
@@ -222,28 +224,57 @@ const randomStyle = (): CSSProperties => {
         0 0 15px rgba(0, 0, 0, 0.9);
 }
 
-/* Glitch full background */
+
+/* --- Efek Glitch --- */
 .glitch-mode {
-    animation: screenShake 0.3s infinite;
-    filter: invert(1) contrast(1.5);
+    animation: screenShake 0.2s infinite;
+    filter: contrast(1.5) brightness(1.1);
 }
 
-.matrix-overlay {
-    position: fixed;
-    inset: 0;
-    background: repeating-linear-gradient(0deg,
-            rgba(0, 255, 100, 0.1) 0,
-            rgba(0, 255, 100, 0.1) 2px,
-            transparent 2px,
-            transparent 4px);
-    animation: matrixRain 0.7s linear infinite;
-    pointer-events: none;
-    z-index: 9999;
-    opacity: 0.9;
+/* Glitch full background */
+.glitch-mode * {
+    position: relative;
+}
+
+.glitch-mode *::before,
+.glitch-mode *::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    clip: rect(0, 900px, 0, 0);
+}
+
+.glitch-mode *::before {
+    left: 2px;
+    text-shadow: -2px 0 red;
+    animation: glitchClip 1s infinite linear alternate-reverse;
+}
+
+.glitch-mode *::after {
+    left: -2px;
+    text-shadow: -2px 0 blue;
+    animation: glitchClip 0.8s infinite linear alternate-reverse;
 }
 
 .glitch-text {
     font-family: monospace;
+}
+
+/* Overlay garis */
+.matrix-overlay {
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(0deg,
+            rgba(0, 255, 100, 0.15) 0,
+            rgba(0, 255, 100, 0.15) 2px,
+            transparent 2px,
+            transparent 4px);
+    animation: matrixRain 0.3s infinite linear;
+    mix-blend-mode: difference;
+    z-index: 9999;
+    pointer-events: none;
 }
 
 .button {
@@ -290,25 +321,22 @@ section {
     }
 }
 
+/* Animasi */
 @keyframes screenShake {
     0% {
         transform: translate(0, 0);
     }
 
-    20% {
-        transform: translate(-2px, 2px);
+    25% {
+        transform: translate(-3px, 2px);
     }
 
-    40% {
-        transform: translate(2px, -2px);
+    50% {
+        transform: translate(3px, -2px);
     }
 
-    60% {
-        transform: translate(-2px, -1px);
-    }
-
-    80% {
-        transform: translate(1px, 2px);
+    75% {
+        transform: translate(-2px, 1px);
     }
 
     100% {
@@ -317,12 +345,40 @@ section {
 }
 
 @keyframes matrixRain {
+    from {
+        background-position: 0 -20px;
+    }
+
+    to {
+        background-position: 0 20px;
+    }
+}
+
+@keyframes flicker {
     0% {
-        background-position: 0 -50px;
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.2;
     }
 
     100% {
-        background-position: 0 50px;
+        opacity: 1;
+    }
+}
+
+@keyframes glitchClip {
+    0% {
+        clip: rect(0, 9999px, 0, 0);
+    }
+
+    50% {
+        clip: rect(0, 9999px, 9999px, 0);
+    }
+
+    100% {
+        clip: rect(0, 9999px, 0, 0);
     }
 }
 </style>
