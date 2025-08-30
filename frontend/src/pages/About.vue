@@ -67,8 +67,12 @@
                             </p>
 
                             <!-- Random ASCII floating -->
-                            <div v-if="isTriggered" class="glitch-text" v-for="n in 20" :key="n" :style="randomStyle()">
+                            <!-- <div v-if="isTriggered" class="glitch-text" v-for="n in 20" :key="n" :style="randomStyle()">
                                 {{ randomAscii() }}
+                            </div> -->
+
+                            <div v-for="ascii in asciiTexts" :key="ascii.id" class="ascii-char" :style="ascii.style">
+                                {{ ascii.text }}
                             </div>
 
                             <!-- Suara -->
