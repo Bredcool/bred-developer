@@ -1,38 +1,79 @@
-<template>
-    <div class="text-white min-vh-100 py-5" :class="{ 'glitch-mode': isTriggered }">
-        <!-- Overlay glitch -->
-        <div v-if="isTriggered" class="matrix-overlay"></div>
-
+<template class="{ 'glitch-mode': isTriggered }">
+    <!-- Overlay glitch -->
+    <div v-if="isTriggered" class="matrix-overlay"></div>
+    <div class="text-white min-vh-100 py-5">
         <section>
             <div class="container py-5">
                 <div class="row align-items-center">
+
                     <!-- Gambar Profil -->
                     <div class="col-md-4 text-center mb-4 mb-md-0">
                         <div class="crown-label">
                             <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 24 24"
                                 fill="gold" class="crown-icon">
                                 <path d="M5 20h14l-1-9-4 3-3-7-3 7-4-3-1 9zm14-15c-.552 0-1 .449-1 1s.448 1 1 1 
-                      1-.449 1-1-.448-1-1-1zm-7-2c-.552 0-1 .449-1 1s.448 1 
-                      1 1 1-.449 1-1-.448-1-1-1zm-7 2c-.552 0-1 
-                      .449-1 1s.448 1 1 1 1-.449 1-1-.448-1-1-1z" />
+                                        1-.449 1-1-.448-1-1-1zm-7-2c-.552 0-1 .449-1 1s.448 1 
+                                        1 1 1-.449 1-1-.448-1-1-1zm-7 2c-.552 0-1 
+                                        .449-1 1s.448 1 1 1 1-.449 1-1-.448-1-1-1z" />
                             </svg>
                         </div>
 
                         <img src="../assets/profile.jpg" alt="Profile" class="img-fluid rounded-3 glowing-border"
                             style="max-width: 250px; height: auto; object-fit: cover;" />
 
-                        <!-- Trigger GOD -->
-                        <p class="god-label" @click="triggerGodEasterEgg">
-                            GOD
-                        </p>
-
-                        <!-- Random ASCII floating -->
-                        <div v-if="isTriggered" class="glitch-text" v-for="n in 15" :key="n" :style="randomStyle()">
-                            {{ randomAscii() }}
+                        <div class="star-label">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"
+                                fill="gold" class="star-icon">
+                                <path d="M12 .587l3.668 7.429 8.2 1.193-5.934 
+                                        5.782 1.402 8.174L12 18.896l-7.336 
+                                        3.869 1.402-8.174L.132 9.209l8.2-1.193z" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"
+                                fill="gold" class="star-icon">
+                                <path d="M12 .587l3.668 7.429 8.2 1.193-5.934 
+                                        5.782 1.402 8.174L12 18.896l-7.336 
+                                        3.869 1.402-8.174L.132 9.209l8.2-1.193z" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"
+                                fill="gold" class="star-icon">
+                                <path d="M12 .587l3.668 7.429 8.2 1.193-5.934 
+                                        5.782 1.402 8.174L12 18.896l-7.336 
+                                        3.869 1.402-8.174L.132 9.209l8.2-1.193z" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"
+                                fill="gold" class="star-icon">
+                                <path d="M12 .587l3.668 7.429 8.2 1.193-5.934 
+                                        5.782 1.402 8.174L12 18.896l-7.336 
+                                        3.869 1.402-8.174L.132 9.209l8.2-1.193z" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"
+                                fill="gold" class="star-icon">
+                                <path d="M12 .587l3.668 7.429 8.2 1.193-5.934 
+                                        5.782 1.402 8.174L12 18.896l-7.336 
+                                        3.869 1.402-8.174L.132 9.209l8.2-1.193z" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"
+                                fill="gold" class="star-icon">
+                                <path d="M12 .587l3.668 7.429 8.2 1.193-5.934 
+                                        5.782 1.402 8.174L12 18.896l-7.336 
+                                        3.869 1.402-8.174L.132 9.209l8.2-1.193z" />
+                            </svg>
                         </div>
 
-                        <!-- Suara -->
-                        <audio ref="glitchSound" src="/assets/glitch.wav"></audio>
+                        <div class="about-wrapper" :class="{ 'glitch-mode': isTriggered }">
+                            <!-- Trigger GOD -->
+                            <p class="god-label" @click="triggerGodEasterEgg">
+                                GOD
+                            </p>
+
+                            <!-- Random ASCII floating -->
+                            <div v-if="isTriggered" class="glitch-text" v-for="n in 15" :key="n" :style="randomStyle()">
+                                {{ randomAscii() }}
+                            </div>
+
+                            <!-- Suara -->
+                            <audio ref="glitchSound" src="/assets/glitch.wav"></audio>
+                        </div>
                     </div>
 
                     <!-- Deskripsi -->
@@ -132,6 +173,33 @@ const randomStyle = (): CSSProperties => {
 </script>
 
 <style scoped>
+.glowing-border {
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 255, 100, 0.25);
+}
+
+.crown-label {
+    margin-top: -70px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+    text-align: center;
+}
+
+.crown-icon {
+    fill: #d4af37;
+    filter: drop-shadow(0 0 2px rgba(212, 175, 55, 0.4));
+}
+
+.star-label {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.star-icon {
+    fill: #f1c40f;
+    filter: drop-shadow(0 0 1px rgba(241, 196, 15, 0.4));
+}
+
 .god-label {
     margin-top: 15px;
     font-size: 2.2rem;
@@ -176,6 +244,50 @@ const randomStyle = (): CSSProperties => {
 
 .glitch-text {
     font-family: monospace;
+}
+
+.button {
+    transition: transform 0.3s ease;
+}
+
+.button:hover {
+    transform: translateY(-5px);
+}
+
+.custom-dropdown {
+    background-color: #1c1c1c;
+    min-width: 230px;
+    padding: 0.5rem;
+    border-radius: 12px;
+}
+
+.custom-dropdown .dropdown-item {
+    color: #e0e0e0;
+    border-radius: 8px;
+    padding: 0.6rem 1rem;
+    transition: all 0.2s ease;
+}
+
+.custom-dropdown .dropdown-item:hover {
+    background: rgba(0, 255, 100, 0.15);
+    color: #00ff64;
+    transform: translateX(5px);
+}
+
+section {
+    animation: fadeInDown 1s ease-in-out;
+}
+
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @keyframes screenShake {
