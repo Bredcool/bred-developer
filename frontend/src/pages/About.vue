@@ -62,26 +62,8 @@
                             GOD
                         </div> -->
 
-
-
-                        <!-- <p class="god-text" @click="triggerGodEasterEgg">
-                            GOD
-                        </p> -->
-
-
-
-                        <!-- <div class="about-wrapper" :class="{ 'glitch-mode': isTriggered }">
-                            <p class="god-text" @click="triggerGodEasterEgg">
-                                GOD
-                            </p>
-
-                            <div v-if="isTriggered" class="matrix-overlay"></div>
-                        </div> -->
-
-
-
                         <div class="about-wrapper" :class="{ 'glitch-mode': isTriggered }">
-                            <p class="god-text" @click="triggerGodEasterEgg">
+                            <p class="god-label" @click="triggerGodEasterEgg">
                                 GOD
                             </p>
 
@@ -142,36 +124,6 @@
 </template>
 
 <script setup lang="ts">
-// import { ref } from "vue";
-
-// const isTriggered = ref(false);
-
-// const triggerGodEasterEgg = () => {
-//     isTriggered.value = true;
-
-//     // Contoh: kembalikan lagi setelah 2 detik
-//     setTimeout(() => {
-//         isTriggered.value = false;
-//     }, 2000);
-// };
-
-
-
-// import { ref } from "vue";
-
-// const isTriggered = ref(false);
-
-// const triggerGodEasterEgg = () => {
-//     isTriggered.value = true;
-
-//     // kembali normal setelah 5 detik
-//     setTimeout(() => {
-//         isTriggered.value = false;
-//     }, 5000);
-// };
-
-
-
 import { ref } from "vue";
 import type { CSSProperties } from "vue";
 
@@ -182,9 +134,11 @@ const triggerGodEasterEgg = () => {
     isTriggered.value = true;
 
     // mainkan sound
-    glitchSound.value?.play();
-    // const audio = new Audio("/assets/glitch.wav");
-    // audio.play();
+    if (glitchSound.value) {
+        glitchSound.value.volume = 0.5; // 0.0 = mute, 1.0 = full volume
+        glitchSound.value.currentTime = 0; // mulai dari awal
+        glitchSound.value.play();
+    }
 
     // balik normal setelah 6 detik
     setTimeout(() => {
@@ -267,142 +221,9 @@ const randomStyle = (): CSSProperties => {
     background: rgba(10, 10, 10, 0.7);
     box-shadow: inset 0 0 10px rgba(212, 175, 55, 0.15),
         0 0 15px rgba(0, 0, 0, 0.9);
-}
-
-
-
-/* .god-text {
-    font-size: 2.5rem;
-    font-family: 'Cinzel', serif;
-    color: #e0e0e0;
-    text-shadow: 0 0 10px rgba(0, 255, 100, 0.5);
     cursor: pointer;
     transition: all 0.3s ease;
 }
-
-.god-text:hover {
-    color: #00ff64;
-    text-shadow: 0 0 20px #00ff64;
-}
-
-.god-text:active,
-.god-text.triggered {
-    animation: shake 0.3s infinite, neon-glow 1s infinite alternate;
-}
-
-@keyframes shake {
-    0% {
-        transform: translate(1px, 1px) rotate(0deg);
-    }
-
-    20% {
-        transform: translate(-1px, -2px) rotate(-1deg);
-    }
-
-    40% {
-        transform: translate(-3px, 0px) rotate(1deg);
-    }
-
-    60% {
-        transform: translate(3px, 2px) rotate(0deg);
-    }
-
-    80% {
-        transform: translate(1px, -1px) rotate(1deg);
-    }
-
-    100% {
-        transform: translate(-1px, 2px) rotate(-1deg);
-    }
-}
-
-@keyframes neon-glow {
-    from {
-        text-shadow: 0 0 10px #00ff64, 0 0 20px #00ff64;
-    }
-
-    to {
-        text-shadow: 0 0 20px #00ff64, 0 0 40px #00ff64;
-    }
-} */
-
-
-
-/* .god-text {
-    font-size: 3rem;
-    font-family: 'Cinzel', serif;
-    color: #e0e0e0;
-    text-shadow: 0 0 10px rgba(0, 255, 100, 0.5);
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.god-text:hover {
-    color: #00ff64;
-    text-shadow: 0 0 20px #00ff64;
-}
-
-.glitch-mode {
-    animation: screenShake 0.3s infinite;
-    background-color: black;
-    position: relative;
-    overflow: hidden;
-}
-
-.matrix-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: repeating-linear-gradient(to bottom,
-            rgba(0, 255, 100, 0.1) 0,
-            rgba(0, 255, 100, 0.1) 2px,
-            transparent 2px,
-            transparent 4px);
-    animation: matrixRain 1s linear infinite;
-    pointer-events: none;
-    z-index: 9999;
-    opacity: 0.8;
-}
-
-@keyframes screenShake {
-    0% {
-        transform: translate(0, 0);
-    }
-
-    20% {
-        transform: translate(-2px, 2px);
-    }
-
-    40% {
-        transform: translate(2px, -2px);
-    }
-
-    60% {
-        transform: translate(-2px, -1px);
-    }
-
-    80% {
-        transform: translate(1px, 2px);
-    }
-
-    100% {
-        transform: translate(0, 0);
-    }
-}
-
-@keyframes matrixRain {
-    0% {
-        background-position: 0 -50px;
-    }
-
-    100% {
-        background-position: 0 50px;
-    }
-} */
-
-
 
 .god-text {
     font-size: 3rem;
@@ -443,47 +264,9 @@ const randomStyle = (): CSSProperties => {
     opacity: 0.9;
 }
 
-@keyframes screenShake {
-    0% {
-        transform: translate(0, 0);
-    }
-
-    20% {
-        transform: translate(-2px, 2px);
-    }
-
-    40% {
-        transform: translate(2px, -2px);
-    }
-
-    60% {
-        transform: translate(-2px, -1px);
-    }
-
-    80% {
-        transform: translate(1px, 2px);
-    }
-
-    100% {
-        transform: translate(0, 0);
-    }
-}
-
-@keyframes matrixRain {
-    0% {
-        background-position: 0 -50px;
-    }
-
-    100% {
-        background-position: 0 50px;
-    }
-}
-
 .glitch-text {
     font-family: monospace;
 }
-
-
 
 .button {
     transition: transform 0.3s ease;
@@ -526,6 +309,42 @@ section {
     100% {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@keyframes screenShake {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    20% {
+        transform: translate(-2px, 2px);
+    }
+
+    40% {
+        transform: translate(2px, -2px);
+    }
+
+    60% {
+        transform: translate(-2px, -1px);
+    }
+
+    80% {
+        transform: translate(1px, 2px);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+@keyframes matrixRain {
+    0% {
+        background-position: 0 -50px;
+    }
+
+    100% {
+        background-position: 0 50px;
     }
 }
 </style>
