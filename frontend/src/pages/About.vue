@@ -91,7 +91,7 @@
                                 {{ randomAscii() }}
                             </div>
 
-                            <audio ref="glitchSound" src="/assets/glitch.mp3"></audio>
+                            <audio ref="glitchSound" src="/assets/glitch.wav"></audio>
                         </div>
                     </div>
 
