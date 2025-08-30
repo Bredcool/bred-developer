@@ -1,5 +1,5 @@
-<template>
-    <div class="text-white min-vh-100 py-5" :class="{ 'glitch-mode': isTriggered }">
+<template class="{ 'glitch-mode': isTriggered }">
+    <div class="text-white min-vh-100 py-5">
         <!-- Efek glitch overlay fullscreen -->
         <div v-if="isTriggered" class="glitch-overlay"></div>
         <section>
