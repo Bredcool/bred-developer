@@ -58,9 +58,9 @@
                             </svg>
                         </div>
 
-                        <!-- <div class="god-label">
+                        <div class="god-label">
                             GOD
-                        </div> -->
+                        </div>
 
 
 
