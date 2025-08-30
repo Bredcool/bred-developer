@@ -1,5 +1,5 @@
 <template>
-    <div class="text-white min-vh-100 py-5" :class="{ 'glitch-mode': isTriggered }">
+    <div class="text-white min-vh-100 py-5">
         <!-- Overlay glitch -->
         <!-- <div v-if="isTriggered" class="matrix-overlay"></div> -->
         <section>
