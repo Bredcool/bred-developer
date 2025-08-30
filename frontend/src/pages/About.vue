@@ -128,6 +128,8 @@ import type { CSSProperties } from "vue";
 
 const isTriggered = ref(false);
 const glitchSound = ref<HTMLAudioElement | null>(null);
+const asciiTexts = ref<{ id: number; text: string; style: CSSProperties }[]>([]);
+let counter = 0;
 
 const triggerGodEasterEgg = () => {
     isTriggered.value = true;
@@ -139,9 +141,20 @@ const triggerGodEasterEgg = () => {
         glitchSound.value.play();
     }
 
+    // generate ascii flood
+    asciiTexts.value = [];
+    for (let i = 0; i < 40; i++) {
+        asciiTexts.value.push({
+            id: counter++,
+            text: randomAscii(),
+            style: randomStyle(),
+        });
+    }
+
     // balik normal setelah 6 detik
     setTimeout(() => {
         isTriggered.value = false;
+        asciiTexts.value = [];
         glitchSound.value?.pause();
         glitchSound.value!.currentTime = 0;
     }, 6000);
@@ -158,7 +171,7 @@ const randomStyle = (): CSSProperties => {
     const top = Math.random() * 100 + "%";
     const left = Math.random() * 100 + "%";
     const color = ["#00ff64", "#ff004c", "#00c8ff"][Math.floor(Math.random() * 3)];
-    const fontSize = Math.random() * 20 + 12 + "px";
+    const fontSize = Math.random() * 24 + 12 + "px";
     return {
         position: "fixed",
         top,
@@ -167,7 +180,7 @@ const randomStyle = (): CSSProperties => {
         fontSize,
         opacity: Math.random() * 0.8 + 0.2,
         textShadow: "0 0 10px " + color,
-        animation: "flicker 0.2s infinite",
+        animation: "flicker 0.2s infinite, fly 6s forwards",
         pointerEvents: "none",
         zIndex: 10000,
     };
@@ -260,6 +273,18 @@ const randomStyle = (): CSSProperties => {
 
 .glitch-text {
     font-family: monospace;
+}
+
+.glitch-trigger {
+    cursor: pointer;
+    color: yellow;
+    text-shadow: 0 0 5px red, 0 0 10px cyan;
+}
+
+.ascii-char {
+    position: fixed;
+    font-weight: bold;
+    user-select: none;
 }
 
 /* Overlay garis */
@@ -379,6 +404,18 @@ section {
 
     100% {
         clip: rect(0, 9999px, 0, 0);
+    }
+}
+
+@keyframes fly {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateY(-300px);
+        opacity: 0;
     }
 }
 </style>
