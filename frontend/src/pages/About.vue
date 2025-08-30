@@ -1,7 +1,7 @@
 <template>
-    <div class="text-white min-vh-100 py-5">
-        <!-- Overlay glitch -->
-        <!-- <div v-if="isTriggered" class="matrix-overlay"></div> -->
+    <div class="text-white min-vh-100 py-5" :class="{ 'glitch-mode': isTriggered }">
+        <!-- Efek glitch overlay fullscreen -->
+        <div v-if="isTriggered" class="glitch-overlay"></div>
         <section>
             <div class="container py-5">
                 <div class="row align-items-center">
@@ -67,12 +67,8 @@
                             </p>
 
                             <!-- Random ASCII floating -->
-                            <!-- <div v-if="isTriggered" class="glitch-text" v-for="n in 20" :key="n" :style="randomStyle()">
+                            <div v-if="isTriggered" class="glitch-text" v-for="n in 15" :key="n" :style="randomStyle()">
                                 {{ randomAscii() }}
-                            </div> -->
-
-                            <div v-for="ascii in asciiTexts" :key="ascii.id" class="ascii-char" :style="ascii.style">
-                                {{ ascii.text }}
                             </div>
 
                             <!-- Suara -->
@@ -132,8 +128,6 @@ import type { CSSProperties } from "vue";
 
 const isTriggered = ref(false);
 const glitchSound = ref<HTMLAudioElement | null>(null);
-const asciiTexts = ref<{ id: number; text: string; style: CSSProperties }[]>([]);
-let counter = 0;
 
 const triggerGodEasterEgg = () => {
     isTriggered.value = true;
@@ -145,20 +139,9 @@ const triggerGodEasterEgg = () => {
         glitchSound.value.play();
     }
 
-    // generate ascii flood
-    asciiTexts.value = [];
-    for (let i = 0; i < 40; i++) {
-        asciiTexts.value.push({
-            id: counter++,
-            text: randomAscii(),
-            style: randomStyle(),
-        });
-    }
-
     // balik normal setelah 6 detik
     setTimeout(() => {
         isTriggered.value = false;
-        asciiTexts.value = [];
         glitchSound.value?.pause();
         glitchSound.value!.currentTime = 0;
     }, 6000);
@@ -172,19 +155,17 @@ const randomAscii = () => {
 
 // posisi random untuk glitch text
 const randomStyle = (): CSSProperties => {
-    const top = Math.random() * 100 + "%";
-    const left = Math.random() * 100 + "%";
-    const color = ["#00ff64", "#ff004c", "#00c8ff"][Math.floor(Math.random() * 3)];
-    const fontSize = Math.random() * 24 + 12 + "px";
+    const top = Math.random() * 90 + "%";
+    const left = Math.random() * 90 + "%";
+    const color = Math.random() > 0.5 ? "#00ff64" : "#e0e0e0";
+    const fontSize = Math.random() * 20 + 12 + "px";
     return {
         position: "fixed",
         top,
         left,
         color,
         fontSize,
-        opacity: Math.random() * 0.8 + 0.2,
-        textShadow: "0 0 10px " + color,
-        animation: "flicker 0.2s infinite, fly 6s forwards",
+        textShadow: "0 0 10px rgba(0,255,100,0.8)",
         pointerEvents: "none",
         zIndex: 10000,
     };
@@ -241,69 +222,28 @@ const randomStyle = (): CSSProperties => {
         0 0 15px rgba(0, 0, 0, 0.9);
 }
 
-
-/* --- Efek Glitch --- */
-.glitch-mode {
-    animation: screenShake 0.2s infinite;
-    filter: contrast(1.5) brightness(1.1);
-}
-
 /* Glitch full background */
-.glitch-mode * {
-    position: relative;
+.glitch-mode {
+    animation: screenShake 0.3s infinite;
+    filter: invert(1) contrast(1.5);
 }
 
-.glitch-mode *::before,
-.glitch-mode *::after {
-    content: attr(data-text);
-    position: absolute;
-    left: 0;
-    width: 100%;
-    overflow: hidden;
-    clip: rect(0, 900px, 0, 0);
-}
-
-.glitch-mode *::before {
-    left: 2px;
-    text-shadow: -2px 0 red;
-    animation: glitchClip 1s infinite linear alternate-reverse;
-}
-
-.glitch-mode *::after {
-    left: -2px;
-    text-shadow: -2px 0 blue;
-    animation: glitchClip 0.8s infinite linear alternate-reverse;
-}
-
-.glitch-text {
-    font-family: monospace;
-}
-
-.glitch-trigger {
-    cursor: pointer;
-    color: yellow;
-    text-shadow: 0 0 5px red, 0 0 10px cyan;
-}
-
-.ascii-char {
-    position: fixed;
-    font-weight: bold;
-    user-select: none;
-}
-
-/* Overlay garis */
 .matrix-overlay {
     position: fixed;
     inset: 0;
     background: repeating-linear-gradient(0deg,
-            rgba(0, 255, 100, 0.15) 0,
-            rgba(0, 255, 100, 0.15) 2px,
+            rgba(0, 255, 100, 0.1) 0,
+            rgba(0, 255, 100, 0.1) 2px,
             transparent 2px,
             transparent 4px);
-    animation: matrixRain 0.3s infinite linear;
-    mix-blend-mode: difference;
-    z-index: 9999;
+    animation: matrixRain 0.7s linear infinite;
     pointer-events: none;
+    z-index: 9999;
+    opacity: 0.9;
+}
+
+.glitch-text {
+    font-family: monospace;
 }
 
 .button {
@@ -350,22 +290,25 @@ section {
     }
 }
 
-/* Animasi */
 @keyframes screenShake {
     0% {
         transform: translate(0, 0);
     }
 
-    25% {
-        transform: translate(-3px, 2px);
+    20% {
+        transform: translate(-2px, 2px);
     }
 
-    50% {
-        transform: translate(3px, -2px);
+    40% {
+        transform: translate(2px, -2px);
     }
 
-    75% {
-        transform: translate(-2px, 1px);
+    60% {
+        transform: translate(-2px, -1px);
+    }
+
+    80% {
+        transform: translate(1px, 2px);
     }
 
     100% {
@@ -374,52 +317,12 @@ section {
 }
 
 @keyframes matrixRain {
-    from {
-        background-position: 0 -20px;
-    }
-
-    to {
-        background-position: 0 20px;
-    }
-}
-
-@keyframes flicker {
     0% {
-        opacity: 1;
-    }
-
-    50% {
-        opacity: 0.2;
+        background-position: 0 -50px;
     }
 
     100% {
-        opacity: 1;
-    }
-}
-
-@keyframes glitchClip {
-    0% {
-        clip: rect(0, 9999px, 0, 0);
-    }
-
-    50% {
-        clip: rect(0, 9999px, 9999px, 0);
-    }
-
-    100% {
-        clip: rect(0, 9999px, 0, 0);
-    }
-}
-
-@keyframes fly {
-    from {
-        transform: translateY(0);
-        opacity: 1;
-    }
-
-    to {
-        transform: translateY(-300px);
-        opacity: 0;
+        background-position: 0 50px;
     }
 }
 </style>
