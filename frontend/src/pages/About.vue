@@ -134,23 +134,23 @@ import type { CSSProperties } from "vue";
 const isTriggered = ref(false);
 const glitchSound = ref<HTMLAudioElement | null>(null);
 
-const triggerGodEasterEgg = () => {
-    isTriggered.value = true;
+// const triggerGodEasterEgg = () => {
+//     isTriggered.value = true;
 
-    // mainkan sound
-    if (glitchSound.value) {
-        glitchSound.value.volume = 0.5;
-        glitchSound.value.currentTime = 0;
-        glitchSound.value.play();
-    }
+//     // mainkan sound
+//     if (glitchSound.value) {
+//         glitchSound.value.volume = 0.5;
+//         glitchSound.value.currentTime = 0;
+//         glitchSound.value.play();
+//     }
 
-    // balik normal setelah 6 detik
-    setTimeout(() => {
-        isTriggered.value = false;
-        glitchSound.value?.pause();
-        glitchSound.value!.currentTime = 0;
-    }, 6000);
-};
+//     // balik normal setelah 6 detik
+//     setTimeout(() => {
+//         isTriggered.value = false;
+//         glitchSound.value?.pause();
+//         glitchSound.value!.currentTime = 0;
+//     }, 6000);
+// };
 
 // generate teks random ASCII
 const randomAscii = () => {
