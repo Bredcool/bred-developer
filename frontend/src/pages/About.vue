@@ -70,7 +70,11 @@
 
                         <div class="about-wrapper" :class="{ 'glitch-mode': isTriggered }">
                             <!-- Trigger GOD -->
-                            <p class="god-label" @click="triggerGodEasterEgg">
+                            <!-- <p class="god-label" @click="triggerGodEasterEgg">
+                                GOD
+                            </p> -->
+
+                            <p class="god-label">
                                 GOD
                             </p>
                         </div>
