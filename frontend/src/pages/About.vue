@@ -68,12 +68,13 @@
                             </svg>
                         </div>
 
-                        <div class="about-wrapper" :class="{ 'glitch-mode': isTriggered }">
-                            <!-- Trigger GOD -->
-                            <!-- <p class="god-label" @click="triggerGodEasterEgg">
+                        <!-- <div class="about-wrapper" :class="{ 'glitch-mode': isTriggered }">
+                            <p class="god-label" @click="triggerGodEasterEgg">
                                 GOD
-                            </p> -->
+                            </p>
+                        </div> -->
 
+                        <div class="about-wrapper">
                             <p class="god-label">
                                 GOD
                             </p>
