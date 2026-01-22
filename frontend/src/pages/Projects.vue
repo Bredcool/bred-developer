@@ -41,6 +41,14 @@
 const projects = [
     {
         id: 1,
+        name: 'BANANA GOD',
+        description: 'Pisang coklat yang sudah ada sejak zaman piramida kuno.',
+        image: '/assets/BANANA GOD.png',
+        demo: 'https://banana-god.pages.dev/',
+        github: 'https://github.com/Bredcool/Banana-GOD',
+    },
+    {
+        id: 2,
         name: 'Cireng RR',
         description: 'A modern landing page website that highlights one main product or service, ideal for online promotions or sales with a clean and attractive design.',
         image: '/assets/cireng_rr.jpg',
@@ -48,7 +56,7 @@ const projects = [
         github: 'https://github.com/Bredcool/cireng-rr',
     },
     {
-        id: 2,
+        id: 3,
         name: 'Karang Taruna RW.02',
         description: 'A professional company profile website, suitable for organizations, local businesses, clinics, workshops, schools, and freelancers who want to introduce their services online.',
         image: '/assets/karang_taruna_rw02.jpg',
@@ -56,7 +64,7 @@ const projects = [
         github: 'https://github.com/Bredcool/karang-taruna-rw02',
     },
     {
-        id: 3,
+        id: 4,
         name: 'Mini 3D',
         description: 'Modern 3D website and advanced visualization.',
         image: '/assets/mini_3d.jpg',
@@ -64,7 +72,7 @@ const projects = [
         github: 'https://github.com/bredcool/mini-3d',
     },
     {
-        id: 4,
+        id: 5,
         name: 'Mini Weather',
         description: 'A real-time weather website that displays accurate temperature and weather condition predictions, equipped with a responsive and user-friendly interface.',
         image: '/assets/work_in_progress.jpg',
@@ -72,7 +80,7 @@ const projects = [
         github: 'https://github.com/bredcool/mini-weather',
     },
     {
-        id: 5,
+        id: 6,
         name: 'Mini AI',
         description: 'A mini AI assistant that resembles ChatGPT, capable of helping users answer questions, provide advice, and interact naturally with advanced AI technology.',
         image: '/assets/work_in_progress.jpg',
@@ -80,7 +88,7 @@ const projects = [
         github: 'https://github.com/bredcool/mini-ai',
     },
     {
-        id: 6,
+        id: 7,
         name: 'Dashboard Admin / CMS Custom',
         description: 'Custom dashboard and CMS system for enterprises, making it easy to manage data, transactions, users and reports with an intuitive interface.',
         image: '/assets/work_in_progress.jpg',
@@ -88,7 +96,7 @@ const projects = [
         github: 'https://github.com/bredcool/dashboard-admin',
     },
     {
-        id: 7,
+        id: 8,
         name: 'Not Found Merch',
         description: 'An online store website for a merchandise brand, featuring products with an attractive design and easy navigation for an optimal user shopping experience.',
         image: '/assets/work_in_progress.jpg',
