@@ -2,14 +2,14 @@ import { createRouter, createWebHistory } from 'vue-router'
 import * as bootstrap from 'bootstrap';
 import Home from '../pages/Home.vue'
 import Projects from '../pages/Projects.vue'
-import Pricelist from '../pages/Pricelist.vue'
+// import Pricelist from '../pages/Pricelist.vue'
 import About from '../pages/About.vue'
 import Contact from '../pages/Contact.vue'
 
 const routes = [
     { path: '/', component: Home },
     { path: '/projects', component: Projects },
-    { path: '/price-list', component: Pricelist},
+    // { path: '/price-list', component: Pricelist},
     { path: '/about', component: About },
     { path: '/contact', component: Contact }
 ]

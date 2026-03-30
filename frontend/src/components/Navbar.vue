@@ -18,9 +18,9 @@
                     <li class="nav-item">
                         <router-link class="nav-link d-inline px-2" to="/projects">Projects</router-link>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <router-link class="nav-link d-inline px-2" to="/price-list">Price List</router-link>
-                    </li>
+                    </li> -->
                     <li class="nav-item">
                         <router-link class="nav-link d-inline px-2" to="/about">About</router-link>
                     </li>

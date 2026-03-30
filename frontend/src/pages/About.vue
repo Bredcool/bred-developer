@@ -132,7 +132,7 @@ import { ref } from "vue";
 import type { CSSProperties } from "vue";
 
 const isTriggered = ref(false);
-const glitchSound = ref<HTMLAudioElement | null>(null);
+// const glitchSound = ref<HTMLAudioElement | null>(null);
 
 // const triggerGodEasterEgg = () => {
 //     isTriggered.value = true;
