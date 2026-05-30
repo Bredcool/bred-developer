@@ -101,11 +101,7 @@
 
                                 <div>
                                     <h5>Bred Developer</h5>
-<<<<<<< HEAD
                                     <p>Fullstack Developer</p>
-=======
-                                    <p>Fullstack Engineer</p>
->>>>>>> fe7e7b5b1b27ee3eb1b53265cddd9e61e4a99951
                                 </div>
 
                             </div>

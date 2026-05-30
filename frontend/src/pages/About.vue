@@ -103,11 +103,7 @@
                             <div class="content-wrapper">
 
                                 <span class="section-badge">
-<<<<<<< HEAD
                                     FULLSTACK DEVELOPER
-=======
-                                    FULLSTACK ENGINEER
->>>>>>> fe7e7b5b1b27ee3eb1b53265cddd9e61e4a99951
                                 </span>
 
                                 <h1 class="main-title">

@@ -239,11 +239,7 @@ const frontendSkills = [
 ]
 
 const backendSkills = [
-<<<<<<< HEAD
     { name: 'Golang', icon: 'fa-brands fa-golang', category: 'Backend' },
-=======
-    { name: 'Golang', icon: 'fa-solid fa-code', category: 'Backend' },
->>>>>>> fe7e7b5b1b27ee3eb1b53265cddd9e61e4a99951
     { name: 'Express JS', icon: 'fab fa-node-js', category: 'Backend' },
     { name: 'C#', icon: 'fa-solid fa-laptop-code', category: 'Backend' },
 ]
@@ -251,11 +247,7 @@ const backendSkills = [
 const databaseSkills = [
     { name: 'PostgreSQL', icon: 'fa fa-database', category: 'Database' },
     { name: 'MySQL', icon: 'fa fa-database', category: 'Database' },
-<<<<<<< HEAD
     { name: 'MSSQL', icon: 'fa fa-database', category: 'Database' },
-=======
-    { name: 'MSSQL', icon: 'fa fa-server', category: 'Database' },
->>>>>>> fe7e7b5b1b27ee3eb1b53265cddd9e61e4a99951
 ]
 
 const toolsSkills = [
