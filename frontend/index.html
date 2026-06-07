@@ -7,25 +7,44 @@
   <!-- RESPONSIVE -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <!-- GOOGLE SEARCH CONSOLE -->
+  <!-- GANTI xxxxxxxxx dengan kode dari Search Console -->
+  <!-- <meta name="google-site-verification" content="xxxxxxxxxxxxxxxxxxxxxxxx" /> -->
+
   <!-- SEO -->
-  <title>Bred Developer | Fullstack Developer</title>
+  <title>Bred Developer | Fullstack Developer | Vue JS • Golang • PostgreSQL</title>
 
   <meta name="description"
-    content="Bred Developer Portfolio - Modern Fullstack Developer specializing in Vue JS, Golang, PostgreSQL, and modern 3D web experiences." />
+    content="Portfolio of Rediawan Ibrahim (Bred), Fullstack Developer specializing in Vue JS, Golang, PostgreSQL, REST API, Dashboard Systems, and modern 3D Web Experiences." />
 
   <meta name="keywords"
-    content="Fullstack Developer, Vue JS, Golang, PostgreSQL, Web Developer, Portfolio, 3D Website" />
+    content="Bred Developer, Rediawan Ibrahim, Fullstack Developer, Vue JS Developer, Golang Developer, PostgreSQL Developer, Portfolio, Dashboard Developer, Website Developer Indonesia, Frontend Developer, Backend Developer" />
 
-  <meta name="author" content="Bred Developer" />
+  <meta name="author" content="Rediawan Ibrahim" />
+
+  <meta name="robots" content="index, follow" />
+
+  <!-- CANONICAL -->
+  <link rel="canonical" href="https://bred-developer.pages.dev/" />
 
   <!-- THEME -->
-  <meta name="theme-color" content="#0b1020" />
+  <meta name="theme-color" content="#050816" />
 
   <!-- OPEN GRAPH -->
-  <meta property="og:title" content="Bred Developer Portfolio" />
-  <meta property="og:description" content="Modern Fullstack Developer Portfolio with interactive 3D experience." />
-  <meta property="og:image" content="/assets/profile.jpg" />
   <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://bred-developer.pages.dev/" />
+  <meta property="og:title" content="Bred Developer | Fullstack Developer" />
+  <meta property="og:description"
+    content="Modern Fullstack Developer Portfolio specializing in Vue JS, Golang, PostgreSQL, Dashboard Systems, APIs, and modern web experiences." />
+  <meta property="og:image" content="https://bred-developer.pages.dev/assets/profile.jpg" />
+  <meta property="og:site_name" content="Bred Developer" />
+
+  <!-- TWITTER -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Bred Developer | Fullstack Developer" />
+  <meta name="twitter:description"
+    content="Portfolio of Rediawan Ibrahim (Bred), Fullstack Developer specializing in Vue JS, Golang, and PostgreSQL." />
+  <meta name="twitter:image" content="https://bred-developer.pages.dev/assets/profile.jpg" />
 
   <!-- ICON -->
   <link rel="icon" type="image/jpg" href="/assets/profile.jpg" />
@@ -34,14 +53,14 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
   <!-- BOOTSTRAP ICONS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
 
   <!-- GOOGLE FONT -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
 
   <!-- SPLINE -->
   <script type="module" src="https://unpkg.com/@splinetool/viewer@1.10.57/build/spline-viewer.js"></script>
@@ -61,38 +80,47 @@
     body {
       font-family: 'Inter', sans-serif;
       background:
-        radial-gradient(circle at top left, rgba(0, 255, 100, 0.08), transparent 25%),
-        radial-gradient(circle at bottom right, rgba(0, 140, 255, 0.08), transparent 25%),
+        radial-gradient(circle at top left,
+          rgba(0, 255, 136, .08),
+          transparent 25%),
+        radial-gradient(circle at bottom right,
+          rgba(0, 140, 255, .08),
+          transparent 25%),
         #050816;
+
       color: #e5e7eb;
       overflow-x: hidden;
       min-height: 100vh;
       position: relative;
     }
 
-    /* Glow background */
     body::before {
-      content: '';
+      content: "";
       position: fixed;
       inset: 0;
+
       background-image:
-        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        linear-gradient(rgba(255, 255, 255, .03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, .03) 1px, transparent 1px);
+
       background-size: 40px 40px;
       z-index: -2;
-      opacity: 0.3;
+      opacity: .25;
     }
 
     body::after {
-      content: '';
+      content: "";
       position: fixed;
       width: 500px;
       height: 500px;
       border-radius: 50%;
-      background: rgba(0, 255, 100, 0.08);
+
+      background: rgba(0, 255, 136, .08);
       filter: blur(120px);
+
       top: -150px;
       right: -150px;
+
       z-index: -1;
     }
 
@@ -101,35 +129,36 @@
       z-index: 1;
     }
 
-    /* Scrollbar */
+    ::selection {
+      background: rgba(0, 255, 136, .35);
+      color: white;
+    }
+
     ::-webkit-scrollbar {
       width: 10px;
     }
 
     ::-webkit-scrollbar-track {
-      background: #070b18;
+      background: #0b1020;
     }
 
     ::-webkit-scrollbar-thumb {
-      background: linear-gradient(180deg, #00ff88, #0084ff);
+      background:
+        linear-gradient(180deg,
+          #00ff88,
+          #00c3ff);
       border-radius: 999px;
-    }
-
-    ::selection {
-      background: rgba(0, 255, 136, 0.35);
-      color: white;
     }
 
     a {
       text-decoration: none;
     }
 
-    /* Loading Fade */
     body {
-      animation: appFade 1s ease;
+      animation: fadeIn 1s ease;
     }
 
-    @keyframes appFade {
+    @keyframes fadeIn {
       from {
         opacity: 0;
         transform: scale(1.01);
@@ -141,15 +170,14 @@
       }
     }
 
-    /* Spline global fix */
     spline-viewer {
       width: 100%;
       height: 100%;
       display: block;
     }
 
-    /* Mobile Optimization */
-    @media (max-width: 768px) {
+    @media (max-width:768px) {
+
       body::after {
         width: 250px;
         height: 250px;
@@ -164,9 +192,11 @@
 </head>
 
 <body>
+
   <div id="app"></div>
 
   <script type="module" src="/src/main.ts"></script>
+
 </body>
 
 </html>
